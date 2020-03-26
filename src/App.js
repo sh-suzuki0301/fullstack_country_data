@@ -3,9 +3,25 @@ import axios from 'axios';
 
 const App = () => {
   const [allCountries, setAllCountries] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState('ture');
+
+  const handleSearchTermChange = e => setSearchTerm(e.target.value);
+
+  const countriesApi = "https://restcountries.eu/rest/v2/all";
+  useEffect(() => {
+    const getData = async () => {
+      setIsLoading(true);
+      const response = await axios.get(countriesApi);
+      setAllCountries(response.data);
+      setIsLoading(false);
+    };
+    getData();
+  },[]);
+
   return (
     <div className="App">
-      <Serch />
+      <Search />
       <Countries />
     </div>
   );
