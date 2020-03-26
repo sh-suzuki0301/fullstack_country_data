@@ -12,7 +12,7 @@ const Countries = ({ countries }) => {
 
     const renderCountries = countries.map((c, id) => (
         <div key={c.name}>
-            {c.name} <button onClinck={() => toggleDetails(id)}>show</button>
+            {c.name} <button onClick={() => toggleDetails(id)}>show</button>
             {showDetails[id] && <Country country={c} />}
         </div>
     ));
