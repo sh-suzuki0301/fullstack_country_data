@@ -19,10 +19,28 @@ const App = () => {
     getData();
   },[]);
 
+  const searchForCountries = countries => {
+    return countries.filter(c =>
+      c.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
   return (
     <div className="App">
-      <Search />
-      <Countries />
+      {isLoading ? (
+      <div>Loading countries...</div>
+      ) : (
+      <div>
+      <Search searchTerm={searchTerm}
+        handleChange={handleSearchTermChange}
+      />
+      {searchForCountries(allCountries).length > 10 ? (
+        <div>Too many matches,specify another filter</div>
+      ) : (
+      <Countries countries={searchForCountries}/>
+      )}
+      </div>
+    )}
     </div>
   );
 };
