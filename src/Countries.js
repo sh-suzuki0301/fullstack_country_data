@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Country from './Country.js'
 
 const Countries = ({ countries }) => {
     const [showDetails, setShowDetails] = useState([]);

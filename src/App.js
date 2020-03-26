@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Search from './Search.js';
+import Countries from './Countries.js';
 
 const App = () => {
   const [allCountries, setAllCountries] = useState('');
@@ -37,7 +39,7 @@ const App = () => {
       {searchForCountries(allCountries).length > 10 ? (
         <div>Too many matches,specify another filter</div>
       ) : (
-      <Countries countries={searchForCountries}/>
+      <Countries countries={searchForCountries(allCountries)}/>
       )}
       </div>
     )}
